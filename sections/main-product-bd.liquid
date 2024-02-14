@@ -202,9 +202,15 @@
                     {{ block.shopify_attributes }}
                 >
                     <fieldset class="js product-form__input">
-                        <legend class="form__label">Color</legend>  
+                        <legend class="form__label">Color (Default is Black)</legend>  
                         
-                        <input required type="radio" id="color1-{{ section.id }}" name="properties[Color]" value="Hot Pink" form="{{ product_form_id }}">
+                        <input type="radio" id="color25-{{ section.id }}" name="properties[Color]" value="Black" form="{{ product_form_id }}" checked="checked">
+                        <label for="color25-{{ section.id }}" class="swatch black">&#10004;</label>
+                        <input type="radio" id="color26-{{ section.id }}" name="properties[Color]" value="Midnight" form="{{ product_form_id }}">
+                        <label for="color26-{{ section.id }}" class="swatch midnight">&#10004;</label>
+                        <input type="radio" id="color24-{{ section.id }}" name="properties[Color]" value="Grey" form="{{ product_form_id }}">
+                        <label for="color24-{{ section.id }}" class="swatch grey">&#10004;</label>
+                        <input type="radio" id="color1-{{ section.id }}" name="properties[Color]" value="Hot Pink" form="{{ product_form_id }}">
                         <label for="color1-{{ section.id }}" class="swatch hot_pink">&#10004;</label>
                         <input type="radio" id="color2-{{ section.id }}" name="properties[Color]" value="Rose" form="{{ product_form_id }}">
                         <label for="color2-{{ section.id }}" class="swatch rose">&#10004;</label>
@@ -250,12 +256,6 @@
                         <label for="color22-{{ section.id }}" class="swatch azure">&#10004;</label>
                         <input type="radio" id="color23-{{ section.id }}" name="properties[Color]" value="Navy" form="{{ product_form_id }}">
                         <label for="color23-{{ section.id }}" class="swatch navy">&#10004;</label>
-                        <input type="radio" id="color24-{{ section.id }}" name="properties[Color]" value="Grey" form="{{ product_form_id }}">
-                        <label for="color24-{{ section.id }}" class="swatch grey">&#10004;</label>
-                        <input type="radio" id="color25-{{ section.id }}" name="properties[Color]" value="Black" form="{{ product_form_id }}">
-                        <label for="color25-{{ section.id }}" class="swatch black">&#10004;</label>
-                        <input type="radio" id="color26-{{ section.id }}" name="properties[Color]" value="Midnight" form="{{ product_form_id }}">
-                        <label for="color26-{{ section.id }}" class="swatch midnight">&#10004;</label>
                     </fieldset>
                 </variant-radios>
                 {% endif %}
