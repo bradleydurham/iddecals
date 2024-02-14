@@ -1,0 +1,125 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
+
+<style>
+  .bd-carousel-gallery {
+    padding-top: 4rem;
+  }
+
+  .bd-carousel-link {
+    text-decoration: none;
+    cursor: zoom-in;
+  }
+
+  .swiper {
+    padding-bottom: 3.25rem;
+  }
+
+  .swiper-wrapper {
+
+  }
+
+  .swiper-pagination-fraction {
+    position: relative;
+    margin-top: 1.5rem;
+  }
+
+  @media screen and (min-width: 1101px) {
+    .bd-carousel-gallery {
+      position: relative;
+      width: 100%;
+      padding: 4rem 10.5rem 0;
+    }
+
+    .bd-carousel-gallery > div:empty {
+      display: block;
+    }
+
+    .swiper {
+      padding-bottom: inherit;
+    }
+
+    .swiper-pagination-fraction {
+      display: none;
+    }
+
+    /* fix the buttons positions */
+    .swiper-button-prev {
+      left: 5rem;
+      color: rgba(18,18,18,.75);
+      height: 27px;
+      top: 60%;
+    }
+
+    .swiper-button-next {
+      right: 5rem;
+      color: rgba(18,18,18,.75);
+      height: 27px;
+      top: 60%;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+      font-size: 2.5rem;
+    }
+    
+
+  }
+
+  .swiper-slide img {
+    width: 100%;
+  }
+
+</style>
+
+<div
+    id="bd-carousel-gallery-{{ section.id }}"
+    data-section="{{ section.id }}"
+    {{ block.shopify_attributes }}
+    class="bd-carousel-gallery page-width"
+>    
+      {% if product.metafields.custom.alternate_images.value %}
+        {% assign array_of_image_objects = product.metafields.custom.alternate_images.value %}
+      {% elsif collection.metafields.custom.alternate_images.value %}
+        {% assign array_of_image_objects = collection.metafields.custom.alternate_images.value %}
+      {% endif %}
+      {% if array_of_image_objects %}
+        <div class="swiper" id="swiper-1">
+          <div class="swiper-wrapper">
+        {% for image_object in array_of_image_objects %}
+            <div class="swiper-slide">
+              <a data-fslightbox="gallery" class="bd-carousel-link" href="{{ image_object | image_url }}" >
+                <img src="{{ image_object | image_url: width: 750 }}" loading="lazy">
+              </a>
+            </div>
+        {% endfor %} 
+          </div>
+          <div class="swiper-pagination caption"></div>
+          
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      {% endif %}
+
+</div>
+
+{% schema %}
+{
+    "name": "⚡️ Carousel Gallery",
+    "templates": ["product", "collection"],
+    "limit": 1,
+    "class": "section",
+    "settings": [
+      {
+          "type": "paragraph",
+          "content": "All images are pulled from product or category metafield for Alternate Images"
+        }
+    ],
+    "presets": [
+      {
+        "name": "⚡️ Carousel Gallery",
+        "category": "⚡️ Carousel Gallery"
+      }
+    ]
+}
+{% endschema %}

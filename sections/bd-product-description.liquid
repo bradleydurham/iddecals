@@ -1,0 +1,38 @@
+<div 
+    id="bd-product-description-{{ section.id }}"
+    data-section="{{ section.id }}"
+    {{ block.shopify_attributes }}
+    class="bd-product-description page-width"
+>
+   <div>
+
+       
+        <h2>Product Details - <span class="bd_subtitle product__text inline-richtext caption-with-letter-spacing">{{ section.settings.subtitle }}</span></h2>
+        
+   </div>
+    <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+        {{ product.description }}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "⚡️ Product Description",
+    "tag": "section",
+    "class": "section",
+    "templates": ["product"],
+    "limit": 1,
+    "settings": [
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle"
+      }
+    ],
+  "presets": [
+    {
+      "name": "⚡️ Product Description"
+    }
+  ]
+}
+{% endschema %}

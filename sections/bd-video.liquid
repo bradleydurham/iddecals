@@ -1,0 +1,44 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+<style>
+  .video-section__media {
+    --ratio-percent: 50%;
+  }
+</style>
+
+<div
+    id="bd-video-{{ section.id }}"
+    data-section="{{ section.id }}"
+    {{ block.shopify_attributes }}
+    class="bd-video page-width"
+>  
+    <div class="video-section isolate">
+      <div class="video-section__media">
+        <video src="{{ section.settings.video.sources[1].url }}" loop muted playsinline autoplay controls></video>
+      </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "⚡️ Video",
+    "class": "section",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "Video will be set to auto-loop and muted."
+        },
+        {
+            "type": "video",
+             "id": "video",
+            "label": "A Shopify-hosted video"
+        }
+
+    ],
+    "presets": [
+      {
+        "name": "⚡️ Video",
+        "category": "⚡️ Video"
+      }
+    ]
+}
+{% endschema %}
